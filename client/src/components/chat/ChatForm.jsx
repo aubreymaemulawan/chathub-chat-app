@@ -60,11 +60,12 @@ function ChatForm(props) {
   return (
     <div ref={scrollRef}>
       {showEmojiPicker && (
-        <Picker className="dark:bg-gray-900" onEmojiClick={handleEmojiClick} />
+        <Picker className="dark:bg-gray-900 " onEmojiClick={handleEmojiClick} />
       )}
       <form onSubmit={handleFormSubmit}>
         <div className="flex items-center justify-between w-full p-3 bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700">
           <button
+            type="button"
             onClick={(e) => {
               e.preventDefault();
               setShowEmojiPicker(!showEmojiPicker);
