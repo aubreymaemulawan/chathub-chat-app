@@ -2,44 +2,38 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { Server } from "socket.io";
-
 import "./config/mongo.js";
-
-// import { VerifySocketToken } from "./middlewares/VerifyToken.js";
 import chatRoomRoutes from "./routes/chatRoom.js";
 import chatMessageRoutes from "./routes/chatMessage.js";
 import userRoutes from "./routes/user.js";
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 dotenv.config();
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 app.use(express.static("public"));
+
+// API Endpoint
 app.use("/uploads", express.static("uploads"));
-// app.use(VerifyToken);
-
-const PORT = process.env.PORT || 5000;
-
 app.use("/api/room", chatRoomRoutes);
 app.use("/api/message", chatMessageRoutes);
 app.use("/api/user", userRoutes);
 
+// Server Port
 const server = app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
+// Client Port
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
     credentials: true,
   },
 });
-
-// io.use(VerifySocketToken);
 
 global.onlineUsers = new Map();
 

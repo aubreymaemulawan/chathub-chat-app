@@ -45,22 +45,23 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
   // Handle Form Submission
   const handleFormSubmit = async (message, image) => {
     const receiverId = currentChat.members.find((member) => member !== user.id);
-    if (message != "" || image != null) {
-      socket.current.emit("sendMessage", {
-        senderId: user.id,
-        receiverId: receiverId,
-        message: message,
-        image: image,
-      });
-      const messageBody = {
-        chatRoomId: currentChat._id,
-        sender: user.id,
-        message: message,
-        image: image,
-      };
-      const res = await sendMessage(messageBody);
-      setMessages([...messages, res]);
-    }
+    // if (message != "" || image != null) {
+    socket.current.emit("sendMessage", {
+      senderId: user.id,
+      receiverId: receiverId,
+      message: message,
+      image: image,
+    });
+    const messageBody = {
+      chatRoomId: currentChat._id,
+      sender: user.id,
+      message: message,
+      image: image,
+    };
+    const res = await sendMessage(messageBody);
+    setMessages([...messages, res]);
+    console.log(messages);
+    // }
   };
 
   // Fetch Messages on Chat Room
@@ -68,6 +69,7 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
     const fetchData = async () => {
       const res = await getMessagesOfChatRoom(currentChat._id);
       setMessages(res);
+      console.log(messages);
     };
     fetchData();
   }, [currentChat._id]);
