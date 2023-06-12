@@ -1,0 +1,17 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "![image](https://github.com/aubreymaemulawan/chathub-chat-app/assets/79576768/8646b17b-f87c-4e5f-83e3-d86ec53fd65f)\r ![image](https://github.com/aubreymaemulawan/chathub-chat-app/assets/79576768/927abfc4-572a-495f-abc5-045bf3f18f13)\r ![image](https://github.com/aubreymaemulawan/chathub-chat-app/assets/79576768/e3889193-92b6-4687-9887-1d8dee71fc7f)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-server": "cd server && npm install",
+    "start-server": "cd server && npm run dev",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
