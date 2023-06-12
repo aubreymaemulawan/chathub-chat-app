@@ -41,6 +41,8 @@ To run this project locally, follow these steps:
 3. Uncomment these files to connect to my database & local server.
    - Navigate to the `client/src/services/ChatService.js` directory and uncomment `const base = "http://127.0.0.1:5000/";` then comment out `const base = "https://chathub-mkw2.onrender.com/";`.
    - Navigate to the `server/index.js` directory and uncomment `const originURL = "http://localhost:3000";` then comment out `const originURL = "https://chathub-client.onrender.com";`.
+   - Navigate to the `client/src/components/chat/ChatRoom.jsx` directory and uncomment `const audio = new Audio("../../../public/audio/alert.mp3");` then comment out `const audio = new Audio("audio\\alert.mp3");`.
+   - Navigate to the `client/src/components/chat/Message.jsx` directory and uncomment `const url = "http://127.0.0.1:5000/";` then comment out `const link = "https://chathub-mkw2.onrender.com/";`.
    - Navigate to the `server/.env` directory and uncomment `MONGO_URI`.
 4. Run the server:
    - Make sure port `http://localhost:5000` is available.
