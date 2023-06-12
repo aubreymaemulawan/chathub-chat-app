@@ -36,10 +36,15 @@ To run this project locally, follow these steps:
 2. Install the dependencies:
    - Navigate to the `client` directory and run `npm install`.
    - Navigate to the `server` directory and run `npm install`.
-3. Run the server:
+3. Uncomment these files to connect to my database & auth.
+   - Navigate to the `client/src/realms/constants.js` directory and uncomment `export const APP_ID`.
+   - Navigate to the `server/.env` directory and uncomment `MONGO_URI`.
+4. Run the server:
+   - Make sure port `http://localhost:5000` is available.
    - Navigate to the `server` directory and run `npm run dev`.
-6. Run the client:
+5. Run the client:
+   - Make sure port `http://localhost:3000` is available.
    - Navigate to the `client` directory and run `npm run dev`.
-7. The application will be accessible at `http://localhost:3000`.
+6. The application will be accessible at `http://localhost:3000`.
 
 Note: The keys included in the code are temporary and will be removed once the assessment is reviewed.
