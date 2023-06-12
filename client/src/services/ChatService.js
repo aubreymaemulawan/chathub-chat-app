@@ -9,7 +9,7 @@ import { io } from "socket.io-client";
 // Uncomment this to run on render.com
 const base = "https://chathub-mkw2.onrender.com/";
 
-const baseURL = base+"api";
+const baseURL = base + "api";
 const app = new App(APP_ID);
 
 const getUserToken = async () => {

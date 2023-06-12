@@ -9,7 +9,9 @@
     "start-server": "cd server && npm run dev",
     "install-client": "cd client && npm install",
     "build-client": "cd client && npm run build",
-    "start-client": "cd client && npm run dev"
+    "start-client": "cd client && npm run dev",
+    "install-serve": "cd client && npm install -g serve",
+    "serve-client": "cd client/dist && serve"
   },
   "keywords": [],
   "author": "",
