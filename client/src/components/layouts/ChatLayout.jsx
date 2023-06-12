@@ -22,16 +22,8 @@ function ChatLayout() {
   const [isContact, setIsContact] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [newMessageUser, setNewMessageUser] = useState("");
-
   const socket = useRef();
   const { user } = useAuth();
-
-  const handleGetMessage = (data) => {
-    setNewMessage(data.message);
-    setNewMessageUser(data.senderId);
-    console.log("data2: " + newMessage + " " + newMessageUser);
-    console.log("get data: " + data.senderId);
-  };
 
   // Get Online Users
   useEffect(() => {
@@ -44,7 +36,6 @@ function ChatLayout() {
         setonlineUsersId(userId);
       });
     };
-
     getSocket();
   }, [user.id]);
 
@@ -81,19 +72,16 @@ function ChatLayout() {
     }
   }, [isContact]);
 
+  // Handle Real Time Message
+  const handleGetMessage = (data) => {
+    setNewMessage(data.message);
+    setNewMessageUser(data.senderId);
+  };
+
   // Handle Current Chat
   const handleChatChange = (chat) => {
-    // const imgUser = document.getElementById("imgUser");
-    // imgUser.classList.remove(
-    //   "text-center ml-2 text-xs bg-transparent text-blue-700 font-semibold pb-1 pt-0.5 px-2 border border-blue-500 rounded-full cursor-pointer"
-    // );
-    // imgUser.style.display = "none";
     setCurrentChat(chat);
     const msgUser = document.getElementById("msgUser");
-
-    // imgUser.classList.remove(
-    //   "text-center ml-2 text-xs bg-transparent text-blue-700 font-semibold pb-1 pt-0.5 px-2 border border-blue-500 rounded-full cursor-pointer"
-    // );
     if (msgUser) {
       msgUser.remove();
     }

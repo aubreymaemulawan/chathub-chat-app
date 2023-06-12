@@ -19,7 +19,6 @@ function ChatForm(props) {
   // Handle Preview of Image when Selected
   const handleSelectImage = (event) => {
     const file = event.target.files[0];
-    console.log(file.type);
     setImage(file);
     const fileReader = new FileReader();
     fileReader.addEventListener("load", () => {

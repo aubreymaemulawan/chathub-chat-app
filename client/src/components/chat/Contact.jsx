@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import { getUser } from "../../services/ChatService";
 import UserLayout from "../layouts/UserLayout";
 
@@ -15,12 +14,8 @@ function Contact({
   // Fetch Chat Room Member
   useEffect(() => {
     const contactId = chatRoom.members?.find((member) => member !== user.id);
-    // const msg = chatRoom.members?.find((member) => member == newMessageUser);
-    // setNewMsg(msg);
     const fetchData = async () => {
       const res = await getUser(contactId);
-      console.log("contact: ", res);
-      console.log(newMessageUser);
       setContact(res);
     };
     fetchData();
@@ -41,6 +36,5 @@ function Contact({
       )}
     </>
   );
-  // <UserLayout user={contact} onlineUsersId={onlineUsersId} />;
 }
 export default Contact;

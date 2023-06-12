@@ -15,15 +15,8 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
   const [incomingMessage, setIncomingMessage] = useState(null);
   const scrollRef = useRef();
 
-  // useEffect(() => {
-  //   socket.current?.on("getMessage", (data) => {
-  //     console.log("data: ", data);
-  //     props.handleGetMessage(data);
-  //   });
-  // }, [socket]);
-
+  // Handle Pop up Message
   const handleGetMessage = async () => {
-    // e.preventDefault();
     socket.current?.on("getMessage", (data) => {
       props.handleGetMessage(data);
     });
@@ -60,7 +53,6 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
     };
     const res = await sendMessage(messageBody);
     setMessages([...messages, res]);
-    console.log(messages);
     // }
   };
 
@@ -69,7 +61,6 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
     const fetchData = async () => {
       const res = await getMessagesOfChatRoom(currentChat._id);
       setMessages(res);
-      console.log(messages);
     };
     fetchData();
   }, [currentChat._id]);
