@@ -28,9 +28,16 @@ const server = app.listen(PORT, () => {
 });
 
 // Client Port
+
+// Uncomment this to run on local server
+// const originURL = "http://localhost:3000";
+
+// Uncomment this to run on render.com
+const originURL = "https://chathub-client.onrender.com";
+
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: originURL,
     credentials: true,
   },
 });
