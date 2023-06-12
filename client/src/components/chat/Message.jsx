@@ -8,7 +8,12 @@ function classNames(...classes) {
 function image(img) {
   var url = img;
   var replacedUrl = url.replace(/\\/g, "/");
-  return `http://127.0.0.1:5000/` + replacedUrl;
+//   Use this to run on local server
+//   const url = "http://127.0.0.1:5000/";
+  
+//   Use this to run on render.com
+  const url = "https://chathub-mkw2.onrender.com/";
+  return url + replacedUrl;
 }
 
 function Message({ message, self }) {
