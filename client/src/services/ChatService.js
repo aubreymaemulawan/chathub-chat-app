@@ -3,7 +3,13 @@ import { APP_ID } from "../realms/constants";
 import { App } from "realm-web";
 import { io } from "socket.io-client";
 
-const baseURL = "http://127.0.0.1:5000/api";
+// Uncomment this to run on local server
+// const base = "http://127.0.0.1:5000/";
+
+// Uncomment this to run on render.com
+const base = "https://chathub-mkw2.onrender.com/";
+
+const baseURL = base+"api";
 const app = new App(APP_ID);
 
 const getUserToken = async () => {
@@ -13,7 +19,7 @@ const getUserToken = async () => {
 };
 
 export const initiateSocketConnection = async () => {
-  const socket = io("http://localhost:5000/");
+  const socket = io(base);
   return socket;
 };
 
