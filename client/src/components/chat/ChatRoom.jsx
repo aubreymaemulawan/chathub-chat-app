@@ -82,6 +82,7 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
       });
       handleShowNotification(data.message);
       const audio = new Audio("/audio/alert.mp3");
+      console.log(audio);
       audio.play();
     });
   }, [socket]);
