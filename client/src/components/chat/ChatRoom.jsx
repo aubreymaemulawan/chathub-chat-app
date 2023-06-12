@@ -38,22 +38,22 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
   // Handle Form Submission
   const handleFormSubmit = async (message, image) => {
     const receiverId = currentChat.members.find((member) => member !== user.id);
-    // if (message != "" || image != null) {
-    socket.current.emit("sendMessage", {
-      senderId: user.id,
-      receiverId: receiverId,
-      message: message,
-      image: image,
-    });
-    const messageBody = {
-      chatRoomId: currentChat._id,
-      sender: user.id,
-      message: message,
-      image: image,
-    };
-    const res = await sendMessage(messageBody);
-    setMessages([...messages, res]);
-    // }
+    if (message != "" || image != null) {
+      socket.current.emit("sendMessage", {
+        senderId: user.id,
+        receiverId: receiverId,
+        message: message,
+        image: image,
+      });
+      const messageBody = {
+        chatRoomId: currentChat._id,
+        sender: user.id,
+        message: message,
+        image: image,
+      };
+      const res = await sendMessage(messageBody);
+      setMessages([...messages, res]);
+    }
   };
 
   // Fetch Messages on Chat Room
@@ -81,7 +81,11 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
         // image: data.image,
       });
       handleShowNotification(data.message);
-      const audio = new Audio("\audio\\alert.mp3");
+
+      // Uncomment this if server is local
+      // const audio = new Audio("../../../public/audio/alert.mp3");
+
+      const audio = new Audio("audio\\alert.mp3");
       audio.play();
     });
   }, [socket]);

@@ -2,7 +2,7 @@
 node_modules
 
 # Files
-server/uploads/
+# server/uploads/
 
 ## Production
 dist
