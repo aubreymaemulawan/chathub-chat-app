@@ -81,8 +81,7 @@ function ChatRoom({ currentChat, user, socket, onlineUsersId, ...props }) {
         // image: data.image,
       });
       handleShowNotification(data.message);
-      const audio = new Audio("/audio/alert.mp3");
-      console.log(audio);
+      const audio = new Audio("..\audio\alert.mp3");
       audio.play();
     });
   }, [socket]);
